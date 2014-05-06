@@ -1,0 +1,34 @@
+<ion-view title="Search">
+    <ion-content class="has-header padding">
+        <div class="list list-inset">
+         <div class="item item-input item-select">
+                <div class="input-label">
+                    Category
+                </div>
+                <select>
+                    <option selected>Any Category</option>                    
+                </select>
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    County
+                </div>
+
+                <select ng-model="county" ng-options="c.Location for c in counties" ng-change="updateAreas(county)"></select>
+
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Area
+                </div>
+                    <select class="nullable" ng-model="area" ng-options="a.Location for a in areas">
+                        <option value="">All Areas</option>
+                    </select>
+
+            </div>                       
+        </div>
+        <a class="button button-block button-balanced" ng-click="search()" href="#/app/listing">
+            Search
+        </a>
+    </ion-content>
+</ion-view>

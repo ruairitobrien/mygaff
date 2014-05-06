@@ -1,0 +1,65 @@
+<ion-view title="Search">
+    <ion-content class="has-header padding">
+        <div class="list list-inset">
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    County
+                </div>
+
+                <select ng-model="searchForm.county" ng-options="c as c.Location for c in counties" ng-change="updateAreas(searchForm.county)"></select>
+
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Area
+                </div>
+                    <select class="nullable" ng-model="searchForm.location" ng-options="a as a.Location for a in areas">
+                        <option value="">All Areas</option>
+                    </select>
+
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Minimum Price
+                </div>
+                <select class="nullable" ng-model="searchForm.priceFrom" ng-options="p as p.label for p in prices">
+                    <option value="">No Min.</option>
+                </select>
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Maximum Price
+                </div>
+                <select class="nullable" ng-model="searchForm.priceTo" ng-options="p as p.label for p in prices">
+                    <option value="">No Max.</option>
+                </select>
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Minimum Rooms
+                </div>
+                <select class="nullable" ng-model="searchForm.bedsFrom" ng-options="b as b.label for b in bedrooms">
+                    <option value="">No Min</option>
+                </select>
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Maximum Rooms
+                </div>
+                <select class="nullable" ng-model="searchForm.bedsTo" ng-options="b as b.label for b in bedrooms">
+                    <option value="">No Max</option>
+                </select>
+            </div>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Listing Type
+                </div>
+                <select ng-model="searchForm.listingType" ng-options="l for l in listingTypes">
+                </select>
+            </div>
+        </div>
+        <button class="button button-block button-balanced" ng-click="search()" >
+            Search
+        </button>
+    </ion-content>
+</ion-view>

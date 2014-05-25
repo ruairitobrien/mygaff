@@ -6,7 +6,9 @@
     <title>MyGaff</title>
 
     <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
     <link href="css/app.min.css" rel="stylesheet">
+
 
     <!-- util -->
     <script src="lib/lodash/lodash.min.js"></script>
@@ -21,14 +23,19 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/constants.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/models.js"></script>
+    <script src="js/properties/controllers.js"></script>
+    <script src="js/properties/services.js"></script>
+    <script src="js/properties/models.js"></script>
+    <script src="js/business/controllers.js"></script>
+    <script src="js/business/services.js"></script>
+    <script src="js/business/models.js"></script>
+    <script src="js/gallery/controllers.js"></script>
+    <script src="js/gallery/services.js"></script>
     <script src="js/libraries.js"></script>
     <script src="js/testData.js"></script>
 </head>
 
-<body ng-app="mygaff" ng-controller="AppCtrl" animation="slide-left-right-ios7">
+<body ng-app="mygaff" animation="slide-left-right-ios7">
 
 <ion-nav-bar class="bar-dark">
     <ion-nav-back-button class="button button-icon ion-arrow-left-c">

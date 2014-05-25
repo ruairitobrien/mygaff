@@ -1,13 +1,15 @@
 <ion-view title="Images">
     <ion-slide-box show-pager="true">
-        <ion-slide>
-            <ion-content><h1>Image 1</h1></ion-content>
+
+        <ion-slide ng-repeat="image in images" class="gallery">
+            <ion-content>
+                <div class="card">
+                    <div class="item item-image">
+                        <img alt="Photo" ng-src="{{image}}"/>
+                    </div>
+                </div>
+            </ion-content>
         </ion-slide>
-        <ion-slide>
-            <ion-content><h1>Image 2</h1></ion-content>
-        </ion-slide>
-        <ion-slide>
-            <ion-content><h1>Image 3</h1></ion-content>
-        </ion-slide>
+
     </ion-slide-box>
 </ion-view>

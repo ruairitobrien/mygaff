@@ -1,17 +1,17 @@
 <ion-view title="{{property.county}}">
-    <ion-content class="has-header padding">
+    <ion-content class="has-header padding property">
 
         <div class="list card">
 
             <div class="item item-avatar">
-                <img ng-src="{{property.thumbnail}}">
+                <img ng-src="{{property.thumbnail}}" hide-on-err>
                 <h2>{{property.location}}</h2>
                 <p>{{property.price}}</p>
             </div>
 
             <div class="item item-body">
                 <a href="#/app/gallery">
-                    <img class="full-image" ng-src="{{property.thumbnail}}">
+                    <img class="full-image" ng-src="{{property.thumbnail}}" hide-on-err>
                 </a>
 
                 <p>{{property.address}}</p>

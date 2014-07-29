@@ -6,6 +6,20 @@
     </ion-nav-buttons>
 
     <ion-content class="has-header padding listing">
-
+        <ion-refresher on-refresh="doRefresh()" pulling-text="Update List" refreshing-text="Updating" refreshing-icon="ion-loading-c">
+        </ion-refresher>
+        <div class="list">
+            <a href="#/app/business" class="item item-thumbnail-left" ng-repeat="business in listings" ng-click="showBusiness(business)" >
+                <img ng-src="{{business.thumbnail}}" hide-on-err>
+                <h2>{{business.title}}</h2>
+            </a>
+        </div>
+        <ion-infinite-scroll
+                class="list"
+                ng-if="moreDataCanBeLoaded()"
+                icon="ion-loading-c"
+                on-infinite="nextPage()"
+                distance="50%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

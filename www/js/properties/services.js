@@ -60,12 +60,12 @@ angular.module('mygaff.property.services', [])
          * @returns {*}
          */
         var prependRootUrlToImageUrl = function (property) {
-            if(property.thumbnail.slice(0, SERVER.resourceRootUrl.length) === SERVER.resourceRootUrl) {
+            if (property.thumbnail.slice(0, SERVER.resourceRootUrl.length) !== SERVER.resourceRootUrl) {
                 property.thumbnail = SERVER.resourceRootUrl + property.thumbnail;
             }
-            if(property.images) {
+            if (property.images) {
                 _.forEach(property.images, function (image, index) {
-                    if(image.slice(0, SERVER.resourceRootUrl.length) === SERVER.resourceRootUrl) {
+                    if (image.slice(0, SERVER.resourceRootUrl.length) !== SERVER.resourceRootUrl) {
                         property.images[index] = SERVER.resourceRootUrl + image;
                     }
                 });
@@ -82,6 +82,7 @@ angular.module('mygaff.property.services', [])
          */
         var updatePropertyValues = function (property) {
             try {
+                prependRootUrlToImageUrl(property);
                 property.price = formatPrice(property.price);
             } catch (err) {
                 console.log(err);
@@ -101,18 +102,22 @@ angular.module('mygaff.property.services', [])
 
         var nextListingsPage = function (next) {
             try {
-                if(activeSearchParams) {
+                if (activeSearchParams && (activeSearchParams.start !== '0')) {
                     var originalList = PropertyListings.getCurrentList();
 
                     searchListings(activeSearchParams, function (err) {
-                        if(err) {
+                        if (err) {
                             return next(err);
                         }
                         PropertyListings.setCurrentList(_.union(originalList, PropertyListings.getCurrentList()));
                         next();
                     });
                 } else {
-                    next(new Error('Invalid search parameters'));
+                    if(activeSearchParams.start === '0') {
+                        next();
+                    } else {
+                        next(new Error('Invalid search parameters'));
+                    }
                 }
 
             } catch (err) {
@@ -145,7 +150,7 @@ angular.module('mygaff.property.services', [])
                         var err = new Error('Error fetching properties');
                         next(err);
                     });
-            } catch(err) {
+            } catch (err) {
                 next(err);
             }
         };
@@ -166,7 +171,7 @@ angular.module('mygaff.property.services', [])
         };
 
         this.getCurrentList = function () {
-               return this.properties;
+            return this.properties;
         };
 
         this.setCurrentList = function (list) {

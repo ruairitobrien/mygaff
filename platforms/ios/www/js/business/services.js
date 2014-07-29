@@ -20,31 +20,43 @@ angular.module('mygaff.business.services', [])
 
         /**
          * Current parameters for searching. These are dynamic and used to allow paging.
-         * Some default values are in place originally to keep jshint happy but should never really be used.
          */
-        var activeSearchParams = {};
+        var activeSearchParams;
 
 
         /**
-         * Prepend the site URL to thumbnails as the app is not in the mygaff site domain.
+         * Prepend the site URL to images as the app is not in the mygaff site domain.
          *
-         * @param property
+         * @param business
          * @returns {*}
          */
-        var prependRootUrlToThumbnailUrl = function (property) {
-            property.thumbnail = SERVER.resourceRootUrl + property.thumbnail;
-            return property;
+        var prependRootUrlToImageUrl = function (business) {
+            if (business.thumbnail.slice(0, SERVER.resourceRootUrl.length) !== SERVER.resourceRootUrl) {
+                business.thumbnail = SERVER.resourceRootUrl + business.thumbnail;
+            }
+            if (business.images) {
+                _.forEach(business.images, function (image, index) {
+                    if (image.slice(0, SERVER.resourceRootUrl.length) !== SERVER.resourceRootUrl) {
+                        business.images[index] = SERVER.resourceRootUrl + image;
+                    }
+                });
+            }
+            return business;
         };
 
         /**
          * Fixes property image URLs and formats prices.
          *
-         * @param property
+         * @param business
          * @returns {*}
          */
-        var updatePropertyValues = function (property) {
-            prependRootUrlToThumbnailUrl(property);
-            return property;
+        var updateBusinessValues = function (business) {
+            try {
+                prependRootUrlToImageUrl(business);
+            } catch (err) {
+                console.log(err);
+            }
+            return business;
         };
 
 
@@ -58,39 +70,62 @@ angular.module('mygaff.business.services', [])
         };
 
         var nextListingsPage = function (next) {
-            var originalList = BusinessListings.getCurrentList();
+            try {
+                if (activeSearchParams && (activeSearchParams.start !== '0')) {
+                    var originalList = BusinessListings.getCurrentList();
 
-            searchListings(activeSearchParams, function (err) {
-                if (err) {
-                    return next(err);
+                    searchListings(activeSearchParams, function (err) {
+                        if (err) {
+                            return next(err);
+                        }
+
+                        if(!originalList.equals(BusinessListings.getCurrentList())) {
+                            BusinessListings.setCurrentList(_.union(originalList, BusinessListings.getCurrentList()));
+                        }
+
+                        next();
+                    });
+                } else {
+                    if(activeSearchParams.start === '0') {
+                        next();
+                    } else {
+                        next(new Error('Invalid search parameters'));
+                    }
                 }
-                BusinessListings.setCurrentList(_.union(originalList, BusinessListings.getCurrentList()));
-                next();
-            });
+
+            } catch (err) {
+                next(err);
+            }
         };
 
         var searchListings = function (params, next) {
-            jQuery.extend(activeSearchParams, params);
-
-            $http(
-                {
-                    method: 'GET',
-                    url: SERVER.rootUrl + '/mapi/',
-                    params: activeSearchParams
-                }).success(function (data) {
-                    if (data && data.properties) {
-                        var formattedProperties = Business.apiResponseTransformer(data.properties).map(updatePropertyValues).filter(Boolean);
-                        BusinessListings.setCurrentList(formattedProperties);
-                        activeSearchParams.start = data.start;
-                        next();
-                    } else {
-                        next(new Error('Not data found'));
-                    }
-                }).
-                error(function () {
-                    var err = new Error('Error fetching properties');
-                    next(err);
-                });
+            try {
+                activeSearchParams = {};
+                jQuery.extend(activeSearchParams, params);
+                $http(
+                    {
+                        method: 'GET',
+                        url: SERVER.rootUrl + '/mapibiz/',
+                        params: activeSearchParams
+                    }).success(function (data) {
+                        if (data && data.listings) {
+                            var formattedProperties = Business.apiResponseTransformer(data.listings).map(updateBusinessValues).filter(Boolean);
+                            BusinessListings.setCurrentList(formattedProperties);
+                            activeSearchParams.start = data.start;
+                            next();
+                        } else {
+                            var err = new Error('No data found');
+                            err.type = 'no results';
+                            next(err);
+                        }
+                    }).
+                    error(function () {
+                        var err = new Error('Error fetching properties');
+                        next(err);
+                    });
+            } catch (err) {
+                next(err);
+            }
         };
 
         return {
@@ -104,16 +139,16 @@ angular.module('mygaff.business.services', [])
     .service('BusinessListings', function () {
         'use strict';
 
-        this.setCurrentProperty = function (property) {
-            this.currentProperty = property;
+        this.setCurrentBusiness = function (business) {
+            this.currentBusiness = business;
         };
 
         this.getCurrentList = function () {
-            return this.properties;
+            return this.businesses;
         };
 
         this.setCurrentList = function (list) {
-            this.properties = list;
+            this.businesses = list;
         };
 
         return this;

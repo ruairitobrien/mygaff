@@ -2,7 +2,7 @@
 
 angular.module('mygaff.property.controllers', ['ui.bootstrap'])
 
-    .controller('PropertyListingCtrl', function ($scope, $state, $stateParams, $ionicLoading, $ionicPopup, PropertyListingService, PropertyListings, PROPERTIES_RESPONSE) {
+    .controller('PropertyListingCtrl', function ($scope, $state, $ionicLoading, $ionicPopup, PropertyListingService, PropertyListings, PROPERTIES_RESPONSE) {
         'use strict';
 
         var moreDataCanBeLoaded = true;
@@ -59,8 +59,7 @@ angular.module('mygaff.property.controllers', ['ui.bootstrap'])
         if (PropertyListings.getCurrentList() && (PropertyListings.getCurrentList().length > 0)) {
             $scope.properties = PropertyListings.getCurrentList();
         } else {
-            $scope.properties = PROPERTIES_RESPONSE.properties;
-            /**
+            //$scope.properties = PROPERTIES_RESPONSE.properties;
             PropertyListingService.fetchLatestListings(function (err) {
                 if (err) {
                     $ionicPopup.alert({
@@ -72,7 +71,7 @@ angular.module('mygaff.property.controllers', ['ui.bootstrap'])
                 } else {
                     $scope.properties = PropertyListings.getCurrentList();
                 }
-            });*/
+            });
         }
     })
 

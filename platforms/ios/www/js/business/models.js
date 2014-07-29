@@ -5,11 +5,11 @@ angular.module('mygaff.business.models', [])
     .factory('Business', function () {
         'use strict';
 
-        function Business(id, content, price, thumbnail, title, images) {
+        function Business(id, content, thumbnail, title, images) {
             this.id = id;
             this.content = content;
-            this.price = price;
             this.thumbnail = thumbnail;
+            this.title = title;
             this.images = images;
         }
 
@@ -17,7 +17,6 @@ angular.module('mygaff.business.models', [])
             return new Business(
                 data.id,
                 data.content,
-                data.price,
                 data.thumbnail,
                 data.title,
                 data.images

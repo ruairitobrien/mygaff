@@ -86,17 +86,17 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 124,
-                "name": "Animal Care &amp; Pet Services",
+                "name": "Animal Care & Pet Services",
                 "parent": 50
             },
             {
                 "id": 77,
-                "name": "Beauty &amp; Fashion",
+                "name": "Beauty & Fashion",
                 "parent": 50
             },
             {
                 "id": 51,
-                "name": "Building &amp; Trades",
+                "name": "Building & Trades",
                 "parent": 50
             },
             {
@@ -131,22 +131,22 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 52,
-                "name": "Financial &amp; Property Services",
+                "name": "Financial & Property Services",
                 "parent": 50
             },
             {
                 "id": 82,
-                "name": "Food &amp; Drink",
+                "name": "Food & Drink",
                 "parent": 50
             },
             {
                 "id": 156,
-                "name": "Furniture &amp; Interiors",
+                "name": "Furniture & Interiors",
                 "parent": 50
             },
             {
                 "id": 110,
-                "name": "Health &amp; Well Being",
+                "name": "Health & Well Being",
                 "parent": 50
             },
             {
@@ -161,17 +161,17 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 147,
-                "name": "Shopping - Clothes, Footwear &amp; Jewellery",
+                "name": "Shopping - Clothes, Footwear & Jewellery",
                 "parent": 50
             },
             {
                 "id": 130,
-                "name": "Shopping - Grocers &amp; General",
+                "name": "Shopping - Grocers & General",
                 "parent": 50
             },
             {
                 "id": 98,
-                "name": "Sports &amp; Fitness",
+                "name": "Sports & Fitness",
                 "parent": 50
             },
             {
@@ -201,7 +201,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 208,
-                "name": "Building Supplies &amp; Materials",
+                "name": "Building Supplies & Materials",
                 "parent": 51
             },
             {
@@ -301,7 +301,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 74,
-                "name": "B &amp; Bs",
+                "name": "B & Bs",
                 "parent": 72
             },
             {
@@ -326,17 +326,17 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 280,
-                "name": "Disability Aids &amp; Equipment",
+                "name": "Disability Aids & Equipment",
                 "parent": 75
             },
             {
                 "id": 281,
-                "name": "Carpets &amp; Flooring",
+                "name": "Carpets & Flooring",
                 "parent": 75
             },
             {
                 "id": 76,
-                "name": "Heating &amp; Oil",
+                "name": "Heating & Oil",
                 "parent": 75
             },
             {
@@ -351,7 +351,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 146,
-                "name": "Cosmetic, Skin &amp; Laser Clinics",
+                "name": "Cosmetic, Skin & Laser Clinics",
                 "parent": 77
             },
             {
@@ -376,12 +376,12 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 83,
-                "name": "Restaurants &amp; Cafes",
+                "name": "Restaurants & Cafes",
                 "parent": 82
             },
             {
                 "id": 84,
-                "name": "Pubs &amp; Clubs",
+                "name": "Pubs & Clubs",
                 "parent": 82
             },
             {
@@ -461,7 +461,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 101,
-                "name": "Sports Wear &amp; Equipment",
+                "name": "Sports Wear & Equipment",
                 "parent": 98
             },
             {
@@ -476,7 +476,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 135,
-                "name": "Couriers &amp; Haulage",
+                "name": "Couriers & Haulage",
                 "parent": 102
             },
             {
@@ -561,7 +561,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 123,
-                "name": "Magicians, Clowns &amp; Facepainting",
+                "name": "Magicians, Clowns & Facepainting",
                 "parent": 121
             },
             {
@@ -616,17 +616,17 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 142,
-                "name": "Advertising, Printing &amp; Promotional Products",
+                "name": "Advertising, Printing & Promotional Products",
                 "parent": 136
             },
             {
                 "id": 141,
-                "name": "Accountants, Bookkeepers &amp; Auditors",
+                "name": "Accountants, Bookkeepers & Auditors",
                 "parent": 136
             },
             {
                 "id": 137,
-                "name": "Banking, Finance &amp; Insurance",
+                "name": "Banking, Finance & Insurance",
                 "parent": 136
             },
             {
@@ -651,7 +651,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 144,
-                "name": "Web Design &amp; Website Consulting",
+                "name": "Web Design & Website Consulting",
                 "parent": 136
             },
             {
@@ -676,7 +676,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 150,
-                "name": "Waste Disposal &amp; Recycling",
+                "name": "Waste Disposal & Recycling",
                 "parent": 149
             },
             {
@@ -691,7 +691,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 158,
-                "name": "Carpets &amp; Flooring",
+                "name": "Carpets & Flooring",
                 "parent": 156
             },
             {
@@ -706,12 +706,12 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 161,
-                "name": "Upholsterers &amp; Upholsterers Supplies",
+                "name": "Upholsterers & Upholsterers Supplies",
                 "parent": 156
             },
             {
                 "id": 162,
-                "name": "Blinds &amp; Curtains",
+                "name": "Blinds & Curtains",
                 "parent": 156
             },
             {
@@ -721,7 +721,7 @@ angular.module('mygaff.constants', [])
             },
             {
                 "id": 164,
-                "name": "Paint &amp; Wallpaper",
+                "name": "Paint & Wallpaper",
                 "parent": 156
             },
             {
